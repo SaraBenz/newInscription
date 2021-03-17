@@ -21,6 +21,7 @@ export class Editformprof extends Component {
         niveaux: ["Docteur" ,"Maitre de Conférences" ,"Professeur"],
         adresse: '',
         date:'',
+        bio:'',
         pwd: '',
         mpwd: '',
        
@@ -62,6 +63,14 @@ handlePrenom = e => {
     this.setState({
         //récuperer la valeur modfier dans le champ
         prenom: e.target.value  }) 
+}
+
+//modifier le contenu du champ ----bio----
+handlebio = e => {
+    //maitre a jour le state
+    this.setState({
+        //récuperer la valeur modfier dans le champ
+        bio: e.target.value  }) 
 }
 
 
@@ -133,7 +142,7 @@ handlePrenom = e => {
     handlesubmitform = e => {
         //pour enregistrer les données 
         e.preventDefault();
-        console.log( ` Nom:${this.state.nom} Prenom:${this.state.prenom} Université: ${this.state.universite}   Faculté: ${this.state.faculte}  Département: ${this.state.departement} Spécialité: ${this.state. specialite} 
+        console.log( ` Nom:${this.state.nom} Prenom:${this.state.prenom}  bio:${this.state.bio} Université: ${this.state.universite}   Faculté: ${this.state.faculte}  Département: ${this.state.departement} Spécialité: ${this.state. specialite} 
         Niveau: ${this.state.niveau}  Adresse: ${this.state.adresse} Date: ${this.state.date} `)    
     }
 
@@ -144,7 +153,7 @@ handlePrenom = e => {
 
             case 1: 
             return (
-                <Paper style={{ width: 300,height: 230, paddingLeft: 50, marginLeft: '35%' , marginTop: 50}}>
+                <Paper style={{ width: 300,height: 280, paddingLeft: 50, marginLeft: '35%' , marginTop: 50}}>
                 <Grid  onSubmit={this.handlesubmitform} nextStep = {this.nextStep }>
              
                 <div > 
@@ -164,6 +173,12 @@ handlePrenom = e => {
                 <TextField id="input-with-icon-grid" label="Date de naissance" 
                  value={this.state.date} onChange={this.handleDate} />
                 </div>
+
+                <div >  
+                <TextField id="input-with-icon-grid" label="Bio" 
+                 value={this.state.bio} onChange={this.handlebio} />
+                </div>
+
                 <br/>
                 <Button  style={{top: 50, left: 30}}variant="contained" color="primary" onClick={this.continue}>Continuer</Button> 
                
