@@ -87,7 +87,7 @@ form.sign-in-form {
   border-radius: 55px;
   grid-template-columns: 15% 85%;
   padding: 0 0.4rem;
-  position: relative;
+  position: relative;display: flex;
 }
 
 .input-field i {

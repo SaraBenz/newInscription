@@ -12,6 +12,9 @@ import {MdEmail}  from 'react-icons/md' ;
 import {RiLockPasswordFill} from 'react-icons/ri';
 import {FaUserAlt} from 'react-icons/fa';
 
+import ToggleButton from "react-bootstrap/ToggleButton";
+import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
+
 
 export default function Inscription() {
   //declaration des var 
@@ -25,7 +28,7 @@ export default function Inscription() {
     const [pwd , setPwd] = React.useState("");
     const [mpwd , setMpwd] = React.useState("");
 
-    const [radio , setRadio] = React.useState("nr");
+   
 
 
     const handleClickSignUp=()=>{ 
@@ -75,6 +78,10 @@ export default function Inscription() {
         setMpwd(e.target.value  ) }
        
 
+
+        const [value, setValue] = React.useState(2);
+        const handleChange = val => setValue(val);
+        
     return(
       <div>
         <div class={Container}>
@@ -94,6 +101,8 @@ export default function Inscription() {
               </div>
 
           <input type="submit" value="Connexion" class="btn solid" />
+          <a style={{marginTop:50}}  href="#" > Mot de passe oublié ?</a>
+
           </form>
 
           
@@ -116,11 +125,12 @@ export default function Inscription() {
               <div class="input-field">
                 <i ><RiLockPasswordFill/></i>
                 <input type="password" placeholder="Confirmer mot de passe" value={mpwd} onChange={handleMpwd} required/></div>
-                <div class="input">
-                <label class="social-text" >Vous êtes</label>
-               
-                 <label  class="social-text"> <input type="radio" onClick={() => setRadio(radio+1)} checked={radio===1 ? true : false}/>Enseignant </label> 
-                 <label class="social-text"><input type="radio" onClick={() => setRadio(radio+2)} checked={radio===2? true : false}/>Etudiant</label> 
+                < div class="input"  >
+                <p  >Vous êtes</p>            
+                <ToggleButtonGroup  class="input" name="value" type="radio" value={value} onChange={handleChange}>
+                <ToggleButton value={1}>Enseignant</ToggleButton>
+                <ToggleButton value={2}>Etudiant</ToggleButton>
+                </ToggleButtonGroup>
                 
                 </div>
                 
