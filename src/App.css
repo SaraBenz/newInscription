@@ -162,6 +162,9 @@ form.sign-in-form {
   transition: 0.5s;
 }
 
+#btn{
+  margin-left: 80px;
+}
 .btn:hover {
   background-color: #445deb;
 }

@@ -126,10 +126,9 @@ export default function Inscription() {
                 <i ><RiLockPasswordFill/></i>
                 <input type="password" placeholder="Confirmer mot de passe" value={mpwd} onChange={handleMpwd} required/></div>
                 < div class="input"  >
-                <p  >Vous êtes</p>            
-                <ToggleButtonGroup  class="input" name="value" type="radio" value={value} onChange={handleChange}>
-                <ToggleButton value={1}>Enseignant</ToggleButton>
-                <ToggleButton value={2}>Etudiant</ToggleButton>
+                <ToggleButtonGroup name="value" type="radio" value={value} onChange={handleChange}>
+                <ToggleButton style={{ backgroundColor:'white',color:'black'}}  value={1}>Enseignant</ToggleButton>
+                <ToggleButton style={{ marginLeft:80,backgroundColor:'white',color:'black'}}value={2}>Etudiant</ToggleButton>
                 </ToggleButtonGroup>
                 
                 </div>
