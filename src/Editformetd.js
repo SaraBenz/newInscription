@@ -157,11 +157,11 @@ handlebio = e => {
         switch (step) {
             case 1: 
             return (
-                <Paper style={{ width: 300,height: 280, paddingLeft: 50, marginLeft: '35%' , marginTop: 50}}>
+                <Paper   style={{ width: 300,height: 280, paddingLeft: 50, marginLeft: '35%' , marginTop: 50}}>
                 <Grid  onSubmit={this.handlesubmitform} nextStep = {this.nextStep }>
              
                 <div > 
-                <TextField id="input-with-icon-grid" label="Nom " 
+                <TextField id="input-with-icon-grid" label="Nom "  
                  value={this.state.nom} onChange={this.handleNom}  />
                 </div>
                 <div > 

@@ -27,10 +27,7 @@ export default function Inscription() {
     const [pwdc , setPwdc] = React.useState("");
     const [pwd , setPwd] = React.useState("");
     const [mpwd , setMpwd] = React.useState("");
-
-   
-
-
+    
     const handleClickSignUp=()=>{ 
           setContainer(" container sign-up-mode")
           setDivContainer("forms-container sign-up-mode")
@@ -40,8 +37,6 @@ export default function Inscription() {
         setContainer(" container ")
         setDivContainer("forms-container")
      }
-
-     
 
      //modifier le contenu du champ ----nom----
      const handleNom = e => {
@@ -57,7 +52,6 @@ export default function Inscription() {
       const handleEmail = e => {
         //maitre a jour le state
         setEmail(e.target.value  ) }
-
         //modifier le contenu du champ ----pwd----
       const handlePwd = e => {
         //maitre a jour le state
@@ -76,9 +70,7 @@ export default function Inscription() {
       const handleMpwd = e => {
         //maitre a jour le state
         setMpwd(e.target.value  ) }
-       
-
-
+        // boutton radio
         const [value, setValue] = React.useState(2);
         const handleChange = val => setValue(val);
         
@@ -87,13 +79,13 @@ export default function Inscription() {
         <div class={Container}>
       <div class={DivContainer}>
         <div class="signin-signup">
-          <form action="#" class="sign-in-form">
+          <form action="#" class="sign-in-form"  >
           <img src={logo}  style={{width:"15vh" ,float:"left",marginTop:'5px',marginRight:'20px', borderRadius: "50px"}} align="center" ></img>
             <h2 class="title">Se connecter</h2>
 
             <div class="input-field">
                 <i><MdEmail/></i>
-                <input type="email" placeholder="Email" value={emailc} onChange={handleEmailc} required /> 
+                <input type="email" placeholder="Email"  id="Email" value={emailc} onChange={handleEmailc} required /> 
             </div>
               <div class="input-field">
                 <i ><RiLockPasswordFill/></i>
@@ -102,9 +94,7 @@ export default function Inscription() {
 
           <input type="submit" value="Connexion" class="btn solid" />
           <a style={{marginTop:50}}  href="#" > Mot de passe oublié ?</a>
-
           </form>
-
           
           <form action="#" class="sign-up-form">
             <h3 class="title">S'inscrire</h3>
@@ -118,7 +108,7 @@ export default function Inscription() {
             </div>
               <div class="input-field">
                 <i><MdEmail/></i>
-                <input type="email" placeholder="Email" value={email} onChange={handleEmail} required/> </div>
+                <input type="email" placeholder="Email"  value={email} onChange={handleEmail} required/> </div>
               <div class="input-field">
                 <i ><RiLockPasswordFill/></i>
                 <input type="password" placeholder="mot de passe" value={pwd} onChange={handlePwd} required/></div>
@@ -134,7 +124,7 @@ export default function Inscription() {
                 </div>
                 
             <input type="submit" class="btn" value="Créer" />
-             
+          
               <div class="social-media">
               <p class="social-text">Inscrivez-vous avec</p>
                 <a href="#" class="social-icon">

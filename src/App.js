@@ -13,8 +13,9 @@ class App extends Component {
     return (
       <div className='App'>
         
-        <Editformprof/>
-       
+        <Inscription/>
+
+        
         
       </div>
       
