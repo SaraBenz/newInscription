@@ -1,176 +1,242 @@
-import React, { Component } from 'react';
+import React from "react";
 
-import { StylesProvider, createGenerateClassName } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
 import logo from "./images/logo.jpg";
-import educ from "./images/educ.svg";
-import {SiFacebook} from 'react-icons/si' ; 
-import {FcGoogle} from 'react-icons/fc';
-import {MdEmail}  from 'react-icons/md' ; 
-import {RiLockPasswordFill} from 'react-icons/ri';
-import {FaUserAlt} from 'react-icons/fa';
 
+import { SiFacebook } from "react-icons/si";
+import { FcGoogle } from "react-icons/fc";
+import { MdEmail } from "react-icons/md";
+import { RiLockPasswordFill } from "react-icons/ri";
+import { FaUserAlt } from "react-icons/fa";
 import ToggleButton from "react-bootstrap/ToggleButton";
 import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
 
+import Useform from "./Useform";
+import Validate from "./Validate";
 
-export default function Inscription() {
-  //declaration des var 
-    const [Container,setContainer]=React.useState("container");
-    const [DivContainer,setDivContainer]=React.useState("forms-container");
-    const [nom , setNom] = React.useState("");
-    const [prenom , setPrenom] = React.useState("");
-    const [email , setEmail] = React.useState("");
-    const [emailc , setEmailc] = React.useState("");
-    const [pwdc , setPwdc] = React.useState("");
-    const [pwd , setPwd] = React.useState("");
-    const [mpwd , setMpwd] = React.useState("");
-    
-    const handleClickSignUp=()=>{ 
-          setContainer(" container sign-up-mode")
-          setDivContainer("forms-container sign-up-mode")
-        }
+export default function Inscription({ submitForm }) {
+  const [Container, setContainer] = React.useState("container");
+  const [DivContainer, setDivContainer] = React.useState("forms-container");
+  const handleClickSignUp = () => {
+    setContainer(" container sign-up-mode");
+    setDivContainer("forms-container sign-up-mode");
+  };
 
-    const handleClickSignIn=()=>{
-        setContainer(" container ")
-        setDivContainer("forms-container")
-     }
+  const handleClickSignIn = () => {
+    setContainer(" container ");
+    setDivContainer("forms-container");
+  };
 
-     //modifier le contenu du champ ----nom----
-     const handleNom = e => {
-      //maitre a jour le state
-      setNom(e.target.value  ) }
+  const [value, setValue] = React.useState(2);
+  const handleRadio = (val) => setValue(val);
 
-      //modifier le contenu du champ ----prenom----
-      const handlePrenom = e => {
-        //maitre a jour le state
-        setPrenom(e.target.value  ) }
+  const { handleChange, values, handleSubmit, errors } = Useform(
+    submitForm,
+    Validate
+  );
 
-        //modifier le contenu du champ ----email----
-      const handleEmail = e => {
-        //maitre a jour le state
-        setEmail(e.target.value  ) }
-        //modifier le contenu du champ ----pwd----
-      const handlePwd = e => {
-        //maitre a jour le state
-        setPwd(e.target.value  ) }
-         //modifier le contenu du champ ----emailc----
-      const handleEmailc = e => {
-        //maitre a jour le state
-        setEmailc(e.target.value  ) }
+  return (
+    <div>
+      <div class={Container}>
+        <div class={DivContainer}>
+          <div class="signin-signup">
+            <form action="#" class="sign-in-form" onSubmit={handleSubmit}>
+              <img
+                src={logo}
+                alt=""
+                style={{
+                  width: "15vh",
+                  float: "left",
+                  marginTop: "5px",
+                  marginRight: "20px",
+                  borderRadius: "50px",
+                }}
+                align="center"
+              ></img>
+              <h2 class="title">Se connecter</h2>
 
-        //modifier le contenu du champ ----pwdc----
-      const handlePwdc = e => {
-        //maitre a jour le state
-        setPwdc(e.target.value  ) }
+              <div></div>
 
-        //modifier le contenu du champ ----mpwd----
-      const handleMpwd = e => {
-        //maitre a jour le state
-        setMpwd(e.target.value  ) }
-        // boutton radio
-        const [value, setValue] = React.useState(2);
-        const handleChange = val => setValue(val);
-        
-    return(
-      <div>
-        <div class={Container}>
-      <div class={DivContainer}>
-        <div class="signin-signup">
-          <form action="#" class="sign-in-form"  >
-          <img src={logo}  style={{width:"15vh" ,float:"left",marginTop:'5px',marginRight:'20px', borderRadius: "50px"}} align="center" ></img>
-            <h2 class="title">Se connecter</h2>
-
-            <div class="input-field">
-                <i><MdEmail/></i>
-                <input type="email" placeholder="Email"  id="Email" value={emailc} onChange={handleEmailc} required /> 
-            </div>
-              <div class="input-field">
-                <i ><RiLockPasswordFill/></i>
-                <input type="password" placeholder="mot de passe" value={pwdc} onChange={handlePwdc} required />
+              <div class="input-field ">
+                <i>
+                  <MdEmail />
+                </i>
+                <input
+                  id="email"
+                  type="email"
+                  name="emailc"
+                  placeholder="Email"
+                  value={values.emailc}
+                  onChange={handleChange}
+                />
+                {errors.emailc && <p>{errors.emailc}</p>}
               </div>
 
-          <input type="submit" value="Connexion" class="btn solid" />
-          <a style={{marginTop:50}}  href="#" > Mot de passe oublié ?</a>
-          </form>
-          
-          <form action="#" class="sign-up-form">
-            <h3 class="title">S'inscrire</h3>
               <div class="input-field">
-                <i><FaUserAlt/></i>
-            <input type="text" placeholder="Nom" value={nom} onChange={handleNom}  required/>
-            </div>
-            <div class="input-field">
-                <i><FaUserAlt/></i>
-            <input type="text" placeholder="Prenom" value={prenom} onChange={handlePrenom} required/>
-            </div>
-              <div class="input-field">
-                <i><MdEmail/></i>
-                <input type="email" placeholder="Email"  value={email} onChange={handleEmail} required/> </div>
-              <div class="input-field">
-                <i ><RiLockPasswordFill/></i>
-                <input type="password" placeholder="mot de passe" value={pwd} onChange={handlePwd} required/></div>
-              <div class="input-field">
-                <i ><RiLockPasswordFill/></i>
-                <input type="password" placeholder="Confirmer mot de passe" value={mpwd} onChange={handleMpwd} required/></div>
-                < div class="input"  >
-                <ToggleButtonGroup name="value" type="radio" value={value} onChange={handleChange}>
-                <ToggleButton style={{ backgroundColor:'white',color:'black'}}  value={1}>Enseignant</ToggleButton>
-                <ToggleButton style={{ marginLeft:80,backgroundColor:'white',color:'black'}}value={2}>Etudiant</ToggleButton>
-                </ToggleButtonGroup>
-                
-                </div>
-                
-            <input type="submit" class="btn" value="Créer" />
-          
-              <div class="social-media">
-              <p class="social-text">Inscrivez-vous avec</p>
-                <a href="#" class="social-icon">
-                <SiFacebook/>
-                </a>
-                <a href="#" class="social-icon">
-                <FcGoogle/>
-                </a></div>
-          </form>
-        </div>
-      </div>
+                <i>
+                  <RiLockPasswordFill />
+                </i>
+                <input
+                  type="password"
+                  placeholder="mot de passe"
+                  name="pwdc"
+                  value={values.pwdc}
+                  onChange={handleChange}
+                />
+                {errors.pwdc && <p>{errors.pwdc}</p>}
+              </div>
 
-      <div class="panels-container">
-        <div class="panel left-panel">
-          <div class="content">
-            <h3>Welcome To Uniswap</h3>
-           
-            <p>
-          Créez un compte et et swapez avec vos profs et vos amis !
-            </p>
-            
-            <button class="btn transparent" id="sign-up-btn" onClick={handleClickSignUp}>
-                Inscription
-            </button>
-           
+              <input type="submit" value="Connexion" class="btn solid" style={{  marginTop: 30
+}} />
+              {
+                <a style={{ marginTop: 50 }} href="#">
+                  Mot de passe oublié ?
+                </a>
+              }
+            </form>
+
+            <form action="#" class="sign-up-form" onSubmit={handleSubmit}>
+              <h3 class="title">S'inscrire</h3>
+              <div class="input-field">
+                <i>
+                  <FaUserAlt />
+                </i>
+                <input
+                  type="text"
+                  placeholder="Nom"
+                  name="nom"
+                  defaultValue={values.nom}
+                  onChange={handleChange}
+                />
+                {errors.nom && <p>{errors.nom}</p>}
+              </div>
+              <div class="input-field">
+                <i>
+                  <FaUserAlt />
+                </i>
+                <input
+                  type="text"
+                  placeholder="Prenom"
+                  name="prenom"
+                  defaultValue={values.prenom}
+                  onChange={handleChange}
+                />
+                {errors.prenom && <p>{errors.prenom}</p>}
+              </div>
+              <div class="input-field">
+                <i>
+                  <MdEmail />
+                </i>
+                <input
+                  type="email"
+                  placeholder="Email"
+                  name="email"
+                  id="email"
+                  defaultValue={values.email}
+                  onChange={handleChange}
+                />
+                {errors.email && <p>{errors.email}</p>}
+              </div>
+              <div class="input-field">
+                <i>
+                  <RiLockPasswordFill />
+                </i>
+                <input
+                  type="password"
+                  placeholder="mot de passe"
+                  name="pwd"
+                  defaultValue={values.pwd}
+                  onChange={handleChange}
+                />
+                {errors.pwd && <p>{errors.pwd}</p>}
+              </div>
+              <div class="input-field">
+                <i>
+                  <RiLockPasswordFill />
+                </i>
+                <input
+                  type="password"
+                  placeholder="Confirmer mot de passe"
+                  name="mpwd"
+                  defaultValue={values.mpwd}
+                  onChange={handleChange}
+                />
+                {errors.mpwd && <p>{errors.mpwd}</p>}
+              </div>
+              <div class="input">
+                <ToggleButtonGroup
+                  name="value"
+                  type="radio"
+                  value={value}
+                  onChange={handleRadio}
+                >
+                  <ToggleButton
+                    style={{ backgroundColor: "white", color: "black" }}
+                    value={1}
+                  >
+                    Enseignant
+                  </ToggleButton>
+                  <ToggleButton
+                    style={{
+                      marginLeft: 80,
+                      backgroundColor: "white",
+                      color: "black",
+                    }}
+                    value={2}
+                  >
+                    Etudiant
+                  </ToggleButton>
+                </ToggleButtonGroup>
+              </div>
+
+              <input type="submit" class="btn" value="Créer" />
+
+              {
+                <div class="social-media">
+                  <p class="social-text">Inscrivez-vous avec</p>
+                  <a href="#" class="social-icon">
+                    <SiFacebook />
+                  </a>
+                  <a href="#" class="social-icon">
+                    <FcGoogle />
+                  </a>
+                </div>
+              }
+            </form>
           </div>
-          
         </div>
-        <div class="panel right-panel">
-          <div class="content">
-            <h3>Vous possedez déja un compte ?</h3>
-            <p>
-             Connectez-vous alors !
-            </p>
-            <button class="btn transparent" id="sign-in-btn" onClick={handleClickSignIn} >
-              Connexion
-            </button>
+
+        <div class="panels-container">
+          <div class="panel left-panel">
+            <div class="content">
+              <h3>Welcome To Uniswap</h3>
+
+              <p>Créez un compte et et swapez avec vos profs et vos amis !</p>
+
+              <button
+                class="btn transparent"
+                id="sign-up-btn"
+                onClick={handleClickSignUp}
+              >
+                Inscription
+              </button>
+            </div>
           </div>
-          <img src="img/register.svg" class="image" alt="" />
+          <div class="panel right-panel">
+            <div class="content">
+              <h3>Vous possedez déja un compte ?</h3>
+              <p>Connectez-vous alors !</p>
+              <button
+                class="btn transparent"
+                id="sign-in-btn"
+                onClick={handleClickSignIn}
+              >
+                Connexion
+              </button>
+            </div>
+            <img src="img/register.svg" class="image" alt="" />
+          </div>
         </div>
       </div>
     </div>
-</div>  
-        )
-    
+  );
 }
-
-
-

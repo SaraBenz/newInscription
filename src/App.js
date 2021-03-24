@@ -1,26 +1,20 @@
-import React,{ Component } from 'react';
-import  Inscription  from './Inscription';
-import Editformetd from './Editformetd';
-import Editformprof from './Editformprof';
-import Suiteinscription from './Suiteinscription';
+import React, { useState } from "react";
+import Inscription from "./Inscription";
+import Profil from "./Profil";
+
 import "tailwindcss/tailwind.css";
 
-import './App.css';
-class App extends Component {
-  
-  render() {
-   
-    return (
-      <div className='App'>
-        
-        <Inscription/>
-
-        
-        
-      </div>
-      
-    ); 
-    }
+import "./App.css";
+const App = () => {
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  function submitForm() {
+    setIsSubmitted(true);
   }
-   
+
+  return (
+    <div className="App">
+      {!isSubmitted ? <Inscription submitForm={submitForm} /> : <Profil />}
+    </div>
+  );
+};
 export default App;
