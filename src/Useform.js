@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+
+import { useState, useEffect } from "react";
 
 const Useform = (callback, Validate) => {
   const [values, setValues] = useState({

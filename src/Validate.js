@@ -18,14 +18,14 @@ export default function Validate(values) {
   // Nom...page -insc
   if (!values.nom.trim()) {
     errors.nom = "veuillez remplir le champ";
-  } else if (!/^[A-Za-z\é\è\ê\-]+$/i.test(values.nom)) {
+  } else if (!/^[A-Za-z]+$/i.test(values.nom)) {
     errors.nom = "Vérifier le nom";
   }
 
   // prenom...page -insc
   if (!values.prenom.trim()) {
     errors.prenom = "veuillez remplir le champ";
-  } else if (!/^[A-Za-z\é\è\ê\-]+$/i.test(values.prenom)) {
+  } else if (!/^[A-Za-z]+$/i.test(values.prenom)) {
     errors.prenom = "Vérifier le prenom";
   }
   // email page-insc

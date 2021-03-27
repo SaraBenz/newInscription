@@ -14,7 +14,8 @@ const App = () => {
 
   return (
     <div className="App">
-      {!isSubmitted ? <SignUp submitForm={submitForm} /> : " "}
+      {/* <SignUp /> */}
+      {!isSubmitted ? <SignUp submitForm={submitForm} /> : <SignIn />}
     </div>
   );
 };

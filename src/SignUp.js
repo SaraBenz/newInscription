@@ -185,7 +185,6 @@ export default function SignUp({ submitForm }) {
           </Grid>
           <Button
             type="submit"
-            maxWidth
             variant="contained"
             color="primary"
             className={classes.submit}
@@ -194,7 +193,7 @@ export default function SignUp({ submitForm }) {
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
-              <Link href="./SignIn" variant="body2">
+              <Link href="../SignIn.js" variant="body2">
                 {"Déjà inscrit ? Connectez-vous par ici !"}
               </Link>
             </Grid>
