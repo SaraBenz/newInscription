@@ -9,12 +9,13 @@ const Useform = (callback, Validate) => {
     email: "",
     pwd: "",
     mpwd: "",
+    fonction: "Etudiant",
   });
 
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleChange = (e) => {
+  const handleChange = async (e) => {
     const { name, value } = e.target;
     setValues({
       ...values,

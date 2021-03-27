@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import Inscription from "./Inscription";
-import Profil from "./Profil";
+
+import SignIn from "./SignIn";
+import SignUp from "./SignUp";
 
 import "tailwindcss/tailwind.css";
 
@@ -13,7 +14,7 @@ const App = () => {
 
   return (
     <div className="App">
-      {!isSubmitted ? <Inscription submitForm={submitForm} /> : <Profil />}
+      {!isSubmitted ? <SignUp submitForm={submitForm} /> : " "}
     </div>
   );
 };

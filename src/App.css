@@ -147,13 +147,6 @@ form.sign-in-form {
   color: #4481eb;
   border-color: #4481eb;
 }
-/* message d'erreur */
-.input-field p {
-  color: red;
-  z-index: 1;
-  text-align: left;
-  width: 200px;
-}
 
 .btn {
   width: 150px;
